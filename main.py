@@ -2,9 +2,9 @@ import requests
 from datetime import datetime
 import os
 
-APP_ID = "bbb1a641"
-APP_KEY = "0be51e7640620b2e631bd0671def4f75"
-USERNAME = "shanu"
+APP_ID = "your_API_ID"
+APP_KEY = "your_API_KEY"
+USERNAME = "Your_username"
 
 nutritionix_end_point = "https://trackapi.nutritionix.com/v2/natural/exercise"
 nutritionix_header = {
@@ -20,7 +20,7 @@ exercise = data["user_input"].title()
 duration = data["duration_min"]
 calories = data["nf_calories"]
 
-post_endpoint = f"https://api.sheety.co/de385931c17d27472add1d69702d619e/myWorkout/workouts"
+post_endpoint = f"https://api.sheety.co/{username}/myWorkout/workouts"
 date_time = datetime.now()
 date = date_time.strftime(f"%d/%m/%Y")
 time = date_time.strftime("%T")
@@ -36,7 +36,7 @@ post_parameters = {
 post_response = requests.post(url=post_endpoint, json=post_parameters)
 
 authentication_header = {
-    "Authorization": "Basic c2hhbnU6c2hhbnVAMjAwMw=="
+    "Authorization": "Basic (your_Authentication_code)"
 }
 authentication_response = requests.post(post_endpoint, json=post_parameters, headers=authentication_header)
 print(authentication_response.text)
